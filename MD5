@@ -1,0 +1,17 @@
+f9ccb5280bb6641c76af7289f29c68c1 *DESCRIPTION
+1e121a38186f2b7c07dd1bd2bf275cfe *NAMESPACE
+ccbcf745043c732d0ea4dce8b82096ba *R/DirectEffects.R
+a5ee9ca14754122e84d26febdc57bd4b *R/data.R
+dd5a398cfa987bcd274d07f5547f97d2 *R/print.seqg.R
+1b95b6273f745c56862ee3c03c64399e *R/summary.seqg.R
+3673978062cae35ce338395272ecf7aa *R/vcov.seqg.R
+8f54ecdf63c3c33983b5d0b238e5fb88 *README.md
+cd91c24cc5ea02fa4e2d53db48996c6f *build/vignette.rds
+08528e7c490195bf799f5bc38021ab7b *data/ploughs.RData
+bc391f03400b1691d66e1a9edeccc28c *inst/doc/DirectEffects.R
+653ab9d260ec78f07394c064e884d187 *inst/doc/DirectEffects.Rmd
+c6d615aa8c6e60895d5a76c355bbe057 *inst/doc/DirectEffects.html
+b3f755071717bd14535340271dfaefb9 *man/ploughs.Rd
+f5046f8727f08135b44afa1c9bf0c4f3 *man/sequential_g.Rd
+653ab9d260ec78f07394c064e884d187 *vignettes/DirectEffects.Rmd
+889be99463556cd5b0e0075d30700d09 *vignettes/figures/ABS_fig3.png
