@@ -1,4 +1,4 @@
-## ----loadpkg, echo = FALSE, include = FALSE------------------------------
+## ----loadpkg, echo = FALSE, include = FALSE-----------------------------------
 knitr::opts_chunk$set(fig.width = 5, fig.height = 4, fig.align = "center")
 library(dplyr)
 library(scales)
@@ -6,38 +6,38 @@ library(reshape2)
 library(ggplot2)
 library(DirectEffects) 
 
-## ---- echo = FALSE, out.width = "600px", fig.align='center'--------------
+## ---- echo = FALSE, out.width = "600px", fig.align='center'-------------------
 knitr::include_graphics("figures/ABS_fig3.png")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 data(ploughs)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ate.mod <- lm(women_politics ~ plow + agricultural_suitability +
                 tropical_climate +  large_animals + political_hierarchies +
                 economic_complexity + rugged, data = ploughs)
 
-## ---- echo = TRUE, eval = TRUE-------------------------------------------
+## ---- echo = TRUE, eval = TRUE------------------------------------------------
 summary(ate.mod)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 form_main <- women_politics ~ plow + agricultural_suitability + tropical_climate +
   large_animals + political_hierarchies + economic_complexity + rugged |
   years_civil_conflict + years_interstate_conflict  + oil_pc + european_descent +
   communist_dummy + polity2_2000 + serv_va_gdp2000 |
   centered_ln_inc + centered_ln_incsq
 
-## ---- echo = TRUE, eval = TRUE-------------------------------------------
+## ---- echo = TRUE, eval = TRUE------------------------------------------------
 direct <- sequential_g(form_main, data = ploughs)
 
-## ---- echo = TRUE, eval = TRUE-------------------------------------------
+## ---- echo = TRUE, eval = TRUE------------------------------------------------
 summary(direct)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 out.boots <- boots_g(direct)
 summary(out.boots)
 
-## ---- echo = FALSE, fig.width= 7, fig.height=4---------------------------
+## ---- echo = FALSE, fig.width= 7, fig.height=4--------------------------------
 df.coef <- rbind(summary(ate.mod)$coef["plow", ],
                summary(direct)$coef["plow", ]) %>% 
   as.data.frame()  %>%
@@ -54,16 +54,16 @@ ggplot(df.coef, aes(x = Estimate, y = pos)) +
        y = "",
        caption = "Lines are 95% confidence intervals")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 coef(direct)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 confint(direct, "plow")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 vcov(direct)[1:3, 1:3]
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # update with only one mediator
 direct1 <- sequential_g(women_politics ~ plow + agricultural_suitability + tropical_climate +
   large_animals + political_hierarchies + economic_complexity + rugged |
